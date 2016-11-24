@@ -1,51 +1,47 @@
 # Bit Operators
 
-- Leading zeros `0` (i.e., to the left) are meaningless
+## `~` [NOT](https://en.wikipedia.org/wiki/Bitwise_operation#NOT)
+The bitwise NOT, or complement, is a unary operation that performs logical negation on each bit, forming the ones' complement of the given binary value. Bits that are 0 become 1, and those that are 1 become 0. For example:
 
-## `~` NOT
+### Truth table
+| A | ~A |
+| --- | --- |
+| 0 | 1 |
+| 1 | 0 |
 
-- Invert a bit
-- Examples:
-    - `~0 = 1`
-    - `~1 = 0`
-    - `~0111 = 1000`
-    - `~100 = 011`
-- In Java, `~` inverts an `int` and not single bits, so:
+## `&` [AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND)
+A bitwise AND takes two equal-length binary representations and performs the logical AND operation on each pair of the corresponding bits, by multiplying them. 
 
-```java
-int b = 0b10;
-~b == 11111111111111111111111111111101
-```
+### Truth table
+| A | B | A&B |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
 
-## `&` AND
+## `|` [OR](https://en.wikipedia.org/wiki/Bitwise_operation#OR)
+A bitwise OR takes two bit patterns of equal length and performs the logical inclusive OR operation on each pair of corresponding bits. The result in each position is 0 if both bits are 0, while otherwise the result is 1. For example:
 
-- Results in `1` in each position if the corresponding first bit *and* second bit are `1`, otherwise `0`.
-- Enables to find if a certain bit in a number contains `1` or `0`. Can be considered like multiplying all bits.
-- Examples:
-    - `10 & 11 = 10`
-    - `0011 & 0010 = 0010`
+### Truth table
+| A | B | A|B |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 1 |
 
-## `|` OR
+## `^` [XOR](https://en.wikipedia.org/wiki/Bitwise_operation#XOR)
+In this we perform the comparison of two bits, being 1 if the two bits are different, and 0 if they are the same.
 
-- Results in `1` in each position if the corresponding first bit *or* second bit are `1`, otherwise `0`.
-- Enables to set a specific bit to `1`.
-- Examples:
-    - `10 | 11 = 11`
-    - `0011 | 0010 = 0011`
+## Truth table
+| A | B | A^B |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
 
-## `^` XOR
-
-- Exclusive OR – results in `1` in each position if the corresponding first bit *or* second bit are `1`, but *not* both, otherwise `0`.
-- Enables to compare two bits – `1` means they are different, `0` means they are the same.
-- Can be used to invert selected bits in a register. Any bit can be toggled by XOR-ing it with `1`.
-- XOR-ing a value against itself yields zero.
-- Examples:
-    - `0101 ^ 0011 = 0110`
-    - `0010 ^ 1010 = 1000`
-- XOR can be used for "backup":
-    - Calculate `a` and `b`'s XOR: `x = a^b`
-    - If needed, recover `a`: `a = b^x`
-    - If needed, recover `b`: `b = a^x`
 
 ## `<<` Shift Left
 
@@ -61,39 +57,33 @@ int b = 0b10;
 
 See also Java section on [Bit Arithmetics/Operations](/java/java.md#bit-arithmeticsoperations) and Data Structures code examples [for BitSet](/basics/data-structures-code-examples.md#bitset).
 
-## Binary Numbers
 
+## Hacks
+Taken from [this StackOverflow response](http://stackoverflow.com/a/47990/2938519)
+
+### Setting a bit
+Set bit x.
 ```
-0 = 0
-1 = 1
-10 = 2
-11 = 3
-100 = 4
-101 = 5
-110 = 6
-111 = 7
-1000 = 8
-1001 = 9
-1010 = 10
-1011 = 11
-1100 = 12
-1101 = 13
-1110 = 14
-1111 = 15
-10000 = 16
-...
+number |= 1 << x;
 ```
 
+### Clearing a bit
+To clear bit x you must invert the bit string with the bitwise NOT operator (~), then AND it.
 ```
-10010110
-^      ^
-|      |------- bit 0
-|
-|-------------- bit 7
+number &= ~(1 << x);
 ```
 
-Having a `1` in the `k`-th bit, means that the decimal number is comprised of `2^k`. For example, for the above number:
+### Toggling a bit
+The XOR operator (^) can be used to toggle a bit.
+```
+number ^= 1 << x;
+```
 
+### Checking a bit
+To check a bit, shift the number x to the right, then bitwise AND it:
 ```
-2^7 + 2^4 + 2^2 + 2^1 = 150
+bit = (number >> x) & 1;
 ```
+
+## Language Tests
+- Java
