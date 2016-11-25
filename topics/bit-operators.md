@@ -24,7 +24,7 @@ A bitwise AND takes two equal-length binary representations and performs the log
 A bitwise OR takes two bit patterns of equal length and performs the logical inclusive OR operation on each pair of corresponding bits. The result in each position is 0 if both bits are 0, while otherwise the result is 1. For example:
 
 ### Truth table
-| A | B | A|B |
+| A | B | A&#124;B |
 | --- | --- | --- |
 | 0 | 0 | 0 |
 | 0 | 1 | 1 |
