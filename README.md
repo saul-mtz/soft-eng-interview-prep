@@ -1,7 +1,7 @@
-# Software Engineering Interview Preparation
+# Software Engineering Fundamentals
 
-The goal of this summary is to contain all the required theoretical material needed to pass a Facebook/Google software engineering interview, but (hopefully) no more than that. It originated out of my own personal notes while preparing for such interviews. I view it as an executive summary, that should ideally take a few hours to read, and that you should read multiple times while preparing for the interview. See [this post](https://orrsella.com/2016/05/14/preparing-for-a-facebook-google-software-engineer-interview/) for more background and tips on preparing for an interview.
+Personal notes to study related with Software Development, originally created from the awesome [orsella's project](https://github.com/orrsella/soft-eng-interview-prep) in order to prepare for job interviews.
 
-Start from [SUMMARY](https://github.com/orrsella/soft-eng-interview-prep/blob/master/SUMMARY.md). It's also available in [GitBook format](https://orrsella.gitbooks.io/soft-eng-interview-prep/content/) for easier reading and navigation.
-
-Want to contribute? Great! Please read [CONTRIBUTING](https://github.com/orrsella/soft-eng-interview-prep/blob/master/CONTRIBUTING.md) first.
+- [SUMMARY](https://github.com/orrsella/soft-eng-interview-prep/blob/master/SUMMARY.md).
+- [GitBook](https://saul-mtz.gitbooks.io/software-engineering-fundamentals/content/).
+- [CONTRIBUTING](https://github.com/saul-mtz/soft-eng-interview-prep/blob/master/CONTRIBUTING.md).
